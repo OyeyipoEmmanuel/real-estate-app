@@ -9,7 +9,7 @@ const Footer = () => {
           
           <form className="flex flex-col items-center justify-center space-y-2 pt-2 md:flex-row md:justify-between md:space-x-6 md:space-y-0">
             <input type="email" placeholder="Enter your Email" className="bg-white px-4 py-2 rounded-md w-full outline-none"/>
-            <button type="submit" className="bg-black text-white w-full py-2 rounded-md hover:bg-opacity-80 duration-200 hover:transition-all md:w-[30%]">Subscribe</button>
+            <button type="submit" className="bg-black text-white w-full py-2 rounded-md hover:bg-opacity-80 duration-200 hover:transition-all md:w-[30%]">Subscribe To our newsletter</button>
           </form>
         </section>
       
