@@ -6,7 +6,7 @@ import Footer from "./Footer";
 
 const LandingPage = () => {
   return (
-    <div className="bg-orange-100 pt-16 bg-opacity-30">
+    <div>
       <Header />
       <div className="px-6 lg:px-20">
         <FeaturedHomes />
