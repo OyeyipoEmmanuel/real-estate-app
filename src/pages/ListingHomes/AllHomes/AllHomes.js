@@ -5,10 +5,15 @@ import HomesCard from "../../../components/HomesCard";
 import Button from "../../../components/Button";
 import { Link } from "react-router-dom";
 import ErrorToast from "../../../components/ErrorToast";
+import Footer from "../../LandingPage/Footer";
 
 const AllHomes = () => {
   const dispatch = useDispatch();
   const { homes, isLoading, error } = useSelector((state) => state.fetchHomes);
+
+  useEffect(()=>{
+    window.scrollTo(0, 0) 
+  }, [])
 
   useEffect(() => {
     dispatch(fetchHomes());
@@ -59,6 +64,8 @@ const AllHomes = () => {
         {!isLoading && homes.length === 0 && <p className="w-full text-center mx-auto my-12 text-3xl text-orange-500">No homes available</p>}
         {/* {error && <ErrorToast errorMessage="An Error Occured! Try again later"/>} */}
       </div>
+
+      <Footer/>
     </React.Fragment>
   );
 };

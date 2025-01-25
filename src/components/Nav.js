@@ -6,10 +6,12 @@ import { Link } from "react-router-dom";
 const Nav = () => {
   return (
     <div className="px-6 md:px-12 flex flex-row items-center justify-between py-3">
+      <Link to="/">
       <span className="flex flex-row items-center">
         <img src={logo} alt="logo" className="" />
         <h1 className="text-2xl text-orange-600 font-bold">DLHomes</h1>
       </span>
+      </Link>
 
       <span className="hidden md:flex flex-row md:space-x-8 lg:space-x-16">
         <a
