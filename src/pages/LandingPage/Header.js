@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "../../components/Button";
+import {motion} from "framer-motion"
 import headerImg from "../../assets/Images/HeaderImg-removebg-preview.png";
 import { RiMenuSearchLine } from "react-icons/ri";
 import { HiEye } from "react-icons/hi";
@@ -10,7 +11,15 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className="">
+    <motion.div variants={{
+      hidden: {
+        opacity: 0,
+      },
+      show: {
+        opacity: 1,
+        transition: { duration: 1.0 }
+      }
+    }} initial="hidden" animate="show" className="">
       <section className="flex flex-col space-y-16 lg:flex-row">
         <span className="px-6 lg:px-20 text-center flex flex-col items-center space-y-5 lg:text-start lg:items-start lg:mt-12 lg:space-y-8 lg:w-[60%]">
           <h1 className="text-3xl leading-8 font-semibold text-black text-opacity-90 md:text-5xl">
@@ -104,7 +113,7 @@ const Header = () => {
           <p className="text-[#3E728A] ">Regular Clients.</p>
         </div>
       </section>
-    </div>
+    </motion.div>
   );
 };
 
