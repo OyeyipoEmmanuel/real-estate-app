@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Card from "../../../components/Card";
 import Footer from "../../LandingPage/Footer";
@@ -7,11 +6,9 @@ import Footer from "../../LandingPage/Footer";
 const HomeDetails = () => {
   const { id } = useParams();
 
-  const { homes } = useSelector((state) => state.fetchHomes);
+  const allHomes = JSON.parse(localStorage.getItem('All_Homes')) || []
 
-  console.log(homes);
-
-  const selectedHomeData = homes.find(
+  const selectedHomeData = allHomes.find(
     (homeData) => homeData.id === parseInt(id)
   );
   console.log(selectedHomeData);
@@ -107,7 +104,7 @@ const HomeDetails = () => {
             <img src={homeDataFromLs.ownerAgent.user_image} alt="Agent" className="rounded-xl max-w-[40%] md:w-full" />
             <div className="items-start justify-start">
               <p className="text-center text-sm md:text-lg">⭐⭐⭐⭐⭐</p>
-              <h1 className="font-semibold text-xl md:text-3xl">{homeDataFromLs.ownerAgent.name}</h1>
+              <h1 className="font-semibold text-xl md:text-3xl text-center">{homeDataFromLs.ownerAgent.name}</h1>
               <p className="text-sm text-center md:text-lg">{homeDataFromLs.phoneNumber.mobile}</p>
             </div>
           </div>

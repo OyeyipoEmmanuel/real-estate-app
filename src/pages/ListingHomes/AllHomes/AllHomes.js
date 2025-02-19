@@ -9,24 +9,47 @@ import Footer from "../../LandingPage/Footer";
 
 const AllHomes = () => {
   const dispatch = useDispatch();
-  const { homes, isLoading, error } = useSelector((state) => state.fetchHomes);
+  const {homes, isLoading, error } = useSelector((state) => state.fetchHomes);
+  
 
   useEffect(()=>{
     window.scrollTo(0, 0) 
+    
+      
+    
+    
   }, [])
 
-  useEffect(() => {
-    dispatch(fetchHomes());
-  }, [dispatch]);
+  
+
+  useEffect(()=>{
+    if(localStorage.getItem('All_Homes') === null){
+      dispatch(fetchHomes());
+    }
+    
+  }, [dispatch])
+
+  const allHomes = JSON.parse(localStorage.getItem('All_Homes')) || []
+  
+  console.log(localStorage.getItem('All_Homes') === null)
+
+  
+
+  // const homesFromls = localStorage.getItem('ALL_HOMES') !== null ? JSON.parse(localStorage.getItem("ALL_HOMES")) : homes;
+
+  
+
+  
 
   if (isLoading) {
     console.log("Loading");
   }
+  console.log(homes)
 
   return (
     <React.Fragment>
       <div>
-        <h1 className="text-center mb-2 text-3xl font-semibold">
+        <h1 className="text-center mb-2 text-3xl md:text-5xl font-semibold">
           Find Property
         </h1>
         <p className="text-center mb-6 md:w-[60%] mx-auto">
@@ -38,12 +61,13 @@ const AllHomes = () => {
       {isLoading && !error && <p className="w-full text-center mx-auto my-12 text-3xl text-orange-500">Loading available homes, Please hold on....</p>}
       <div className="px-6 lg:px-20 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 mb-8">
         
-        {!isLoading && homes.length > 0 && (
-          homes.map((eachHome) => {
+        {!isLoading && allHomes.length > 0 && (
+          allHomes.map((eachHome) => {
             const homeAddress = "2861 62nd Ave, Oakland, CA 94605";
             return (
               <HomesCard
                 key={eachHome.id}
+                id={eachHome.id}
                 homeImage={eachHome.coverPhoto.url}
                 homeLocation={homeAddress}
                 bedrooms={+eachHome.rooms + 1}
@@ -61,7 +85,7 @@ const AllHomes = () => {
             );
           })
         )}
-        {!isLoading && homes.length === 0 && <p className="w-full text-center mx-auto my-12 text-3xl text-orange-500">No homes available</p>}
+        {!isLoading && allHomes.length === 0 && <p className="w-full text-center mx-auto my-12 text-3xl text-orange-500">No homes available</p>}
         {/* {error && <ErrorToast errorMessage="An Error Occured! Try again later"/>} */}
       </div>
 
