@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Card from "../../../components/Card";
 import Footer from "../../LandingPage/Footer";
+import LoadingSpinner from "../../../components/LoadingSpinner";
 
 const HomeDetails = () => {
+  const [showLoadingSpinner, setShowLoadingSpinner] = useState(false);
   const { id } = useParams();
 
   const allHomes = JSON.parse(localStorage.getItem('All_Homes')) || []
@@ -27,8 +29,20 @@ const HomeDetails = () => {
 
   console.log(selectedHomeData);
 
+  useEffect(() => {
+      setShowLoadingSpinner(true);
+      const spin = setTimeout(() => {
+        setShowLoadingSpinner(false);
+      }, 3000);
+  
+      return () => clearTimeout(spin);
+    }, []);
+
   return (
-    <>
+    <React.Fragment>
+    {showLoadingSpinner && <LoadingSpinner/>}
+    {!showLoadingSpinner && <>
+    
       <main className="mb-12 px-6 lg:px-20 flex flex-col space-y-6 justify-center md:justify-between md:flex-row md:space-y-0 md:space-x-6">
         <div className="w-full">
           <img
@@ -111,9 +125,12 @@ const HomeDetails = () => {
         </Card>
       </div>
 
-      <Footer/>
       
-    </>
+      
+    </>}
+
+    <Footer/>
+    </React.Fragment>
   );
 };
 

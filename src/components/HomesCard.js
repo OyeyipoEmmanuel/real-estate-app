@@ -18,8 +18,9 @@ const HomesCard = (props) => {
   // console.log(props.id)
 
   const togglefavourite = (id) => {
-    setFavourite((prev) => !prev);
     console.log(favourite);
+    setFavourite(prev => !prev);
+    
 
     let selectedHome = homes.find((home) => home.id === parseInt(id));
     console.log(selectedHome);
@@ -28,16 +29,16 @@ const HomesCard = (props) => {
     const idInDatas = datas.find(data =>data.id === selectedHome.id)
 
     if(idInDatas) {
-      setFavourite(!favourite);
+      setFavourite(true);
       console.log("Home already in favourites");
       return;
     }
 
-    if (selectedHome && !favourite) {
+    if (selectedHome && favourite) {
       dispatch(favouriteHomesAction.addFavouriteHome(selectedHome));
 
       console.log("Home added to favourites");
-    } else if (selectedHome && favourite) {
+    } else if (selectedHome && !favourite) {
       dispatch(favouriteHomesAction.removeFavouriteHome(id));
     } else {
       console.log("error");

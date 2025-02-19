@@ -1,17 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import HomesCard from "../../components/HomesCard";
-import { data, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from "../../components/Button";
 
 const FavouriteHomes = () => {
   const dispatch = useDispatch();
 
-  const { datas } = useSelector((state) => state.storeFavouriteHomes);
-  console.log(data);
-  const homeAddress = "2861 62nd Ave, Oakland, CA 94605";
+  
 
-  return datas.map((data) => (
+  const { datas } = useSelector((state) => state.storeFavouriteHomes);
+
+  // useState(()=>{
+  //   if(datas.length > 0){
+  //     localStorage.setItem("FavouriteHomes", JSON.stringify(datas))
+  //   }else{
+  //     console.log("Nothing");
+  //   }
+    
+  // }, [])
+
+  
+  const homeAddress = "2861 62nd Ave, Oakland, CA 94605";
+  // const dataFromls = JSON.parse(localStorage.getItem("FavouriteHomes"))
+
+  return datas.length === 0 ? <p>Nothing</p> : datas.map((data) => (
     <HomesCard
       key={data.id}
       id={data.id}

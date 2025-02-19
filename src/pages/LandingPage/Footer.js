@@ -3,7 +3,7 @@ import logo from "../../assets//Images/icon.png";
 
 const Footer = () => {
   return (
-    <main>
+    <main id="footer">
       <section className="mt-24 bg-black px-4 py-16">
         <section className="bg-gray-300 text-center rounded-lg py-12 px-6 w-[80%] mx-auto">
           <h1 className="text-2xl font-semibold pb-2 md:text-6xl">
