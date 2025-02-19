@@ -105,7 +105,7 @@ const Nav = () => {
               href="/"
               className="hover:text-orange-600 hover:transition-all duration-200 text-black"
             >
-              About
+              About Us
             </a>
             <Link
               to="/favourites"
@@ -113,14 +113,14 @@ const Nav = () => {
             >
               Favourites
             </Link>
-            <a
-              href="/"
+            <Link to="/all-properties"
+              
               className="hover:text-orange-600 hover:transition-all duration-200 text-black"
             >
               Property
-            </a>
+            </Link>
             <a
-              href="/"
+              href="#footer"
               className="hover:text-orange-600 hover:transition-all duration-200 text-black"
             >
               Blog

@@ -6,6 +6,7 @@ import SignUp from "./pages/auth/SignUp";
 import AllHomes from "./pages/ListingHomes/AllHomes/AllHomes";
 import HomeDetails from "./pages/ListingHomes/HomeDetails/HomeDetails";
 import FavouriteHomes from "./pages/FavouriteHomes/FavouriteHomes";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/all-properties" element={<AllHomes />} />
           <Route path="/all-properties/:id" element={<HomeDetails />} />
           <Route path="/favourites" element={<FavouriteHomes/>} />
+          <Route path="/load" element={<LoadingSpinner/>} />
 
         </Routes>
       </section>
