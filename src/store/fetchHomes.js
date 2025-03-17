@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import config from "../config/config";
 
 export const fetchHomes = createAsyncThunk("fetchHomes", async () => {
   // const url =
@@ -19,7 +18,7 @@ export const fetchHomes = createAsyncThunk("fetchHomes", async () => {
   const response = await fetch(url, {
     method: "GET",
     headers: {
-      'x-rapidapi-key': 'd9d8e68216msh23255ee32266ff1p131683jsn6ed0d0eca321',
+      'x-rapidapi-key': process.env.REACT_APP_API_KEY,
       'x-rapidapi-host': 'bayut.p.rapidapi.com'
     }
   });

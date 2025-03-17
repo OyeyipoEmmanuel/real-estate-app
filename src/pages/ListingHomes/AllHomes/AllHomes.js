@@ -29,7 +29,7 @@ const AllHomes = () => {
     setShowLoadingSpinner(true);
     const spin = setTimeout(() => {
       setShowLoadingSpinner(false);
-    }, 1000);
+    }, 2000);
 
     return () => clearTimeout(spin);
   }, []);
@@ -65,7 +65,7 @@ const AllHomes = () => {
               }
             }}
           >
-            {!isLoading &&
+            {!isLoading && !error &&
               allHomes.length > 0 &&
               allHomes.map((eachHome) => {
                 const homeAddress = "2861 62nd Ave, Oakland, CA 94605";
@@ -106,7 +106,7 @@ const AllHomes = () => {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
               >
-                No homes available
+                No homes available. Please check back later!
               </motion.p>
             )}
           </motion.div>

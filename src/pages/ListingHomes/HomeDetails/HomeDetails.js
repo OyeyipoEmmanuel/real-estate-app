@@ -37,7 +37,6 @@ const HomeDetails = () => {
   
       return () => clearTimeout(spin);
     }, []);
-
   return (
     <React.Fragment>
     {showLoadingSpinner && <LoadingSpinner/>}
