@@ -13,7 +13,7 @@ export const fetchHomes = createAsyncThunk("fetchHomes", async () => {
   // });
 
   const url =
-    'https://bayut.p.rapidapi.com/properties/list?locationExternalIDs=5002%2C6020&purpose=for-rent&hitsPerPage=25&page=0&lang=en&rentFrequency=monthly&categoryExternalID=4'
+    'https://bayut.p.rapidapi.com/properties/list?locationExternalIDs=5002%2C6020&purpose=for-rent&hitsPerPage=25&page=0&lang=en&rentFrequency=monthly&categoryExternalID=4&query=""'
     
   const response = await fetch(url, {
     method: "GET",
@@ -25,6 +25,7 @@ export const fetchHomes = createAsyncThunk("fetchHomes", async () => {
 
   try {
     const data = await response.json();
+    console.log(data)
 
     const dataInLs = localStorage.setItem("All_Homes", JSON.stringify(data.hits))
 
@@ -50,6 +51,7 @@ const propertySlice = createSlice({
         state.isLoading = false;
         // state.homes = action.payload;
         console.log(state.homes)
+        console.log("fetched")
       })
       .addCase(fetchHomes.rejected, (state) => {
         state.isLoading = false;

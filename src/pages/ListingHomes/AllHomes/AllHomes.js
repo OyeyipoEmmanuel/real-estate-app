@@ -15,8 +15,10 @@ const AllHomes = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+  
   }, []);
 
+  
   useEffect(() => {
     if (localStorage.getItem("All_Homes") === null) {
       dispatch(fetchHomes());
@@ -24,6 +26,7 @@ const AllHomes = () => {
   }, [dispatch]);
 
   const allHomes = JSON.parse(localStorage.getItem("All_Homes")) || [];
+  console.log(allHomes)
 
   useEffect(() => {
     setShowLoadingSpinner(true);
