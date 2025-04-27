@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import config from "../config/config";
 
 export const fetchHomes = createAsyncThunk("fetchHomes", async () => {
   // const url =
@@ -14,18 +13,19 @@ export const fetchHomes = createAsyncThunk("fetchHomes", async () => {
   // });
 
   const url =
-    'https://bayut.p.rapidapi.com/properties/list?locationExternalIDs=5002%2C6020&purpose=for-rent&hitsPerPage=25&page=0&lang=en&rentFrequency=monthly&categoryExternalID=4'
+    'https://bayut.p.rapidapi.com/properties/list?locationExternalIDs=5002%2C6020&purpose=for-rent&hitsPerPage=25&page=0&lang=en&rentFrequency=monthly&categoryExternalID=4&query=""'
     
   const response = await fetch(url, {
     method: "GET",
     headers: {
-      'x-rapidapi-key': 'd9d8e68216msh23255ee32266ff1p131683jsn6ed0d0eca321',
+      'x-rapidapi-key': process.env.REACT_APP_API_KEY,
       'x-rapidapi-host': 'bayut.p.rapidapi.com'
     }
   });
 
   try {
     const data = await response.json();
+    console.log(data)
 
     const dataInLs = localStorage.setItem("All_Homes", JSON.stringify(data.hits))
 
@@ -51,6 +51,7 @@ const propertySlice = createSlice({
         state.isLoading = false;
         // state.homes = action.payload;
         console.log(state.homes)
+        console.log("fetched")
       })
       .addCase(fetchHomes.rejected, (state) => {
         state.isLoading = false;
